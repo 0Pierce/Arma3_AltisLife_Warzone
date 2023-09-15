@@ -1,5 +1,5 @@
 # Arma3-Altislife-Warzone
-Plug &amp; Play warzone script which spawns enemy bases and AI on a part of the map which can be raided for loot.
+Plug &amp; Play warzone script that spawns enemy bases and AI on a part of the map which can be raided for loot.
 
 
 
