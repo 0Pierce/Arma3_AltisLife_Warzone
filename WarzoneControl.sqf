@@ -73,7 +73,7 @@ LOC1_trigger = createTrigger ["EmptyDetector", [12301.926, 8876.265]];
 LOC1_trigger setTriggerArea [GLOBAL_AI_Trigger_Area_X, GLOBAL_AI_Trigger_Area_Y, 0, false];
 LOC1_trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 
-LOC1_trigger setTriggerStatements ["this", "execVM 'Warzone Locations\loc1.sqf'", "LOC_tracker = 1; execVM 'Warzone Locations\locDespawn.sqf';"];
+LOC1_trigger setTriggerStatements ["this", "execVM 'Warzone\Warzone Locations\loc1.sqf'", "LOC_tracker = 1; execVM 'Warzone\Warzone Locations\locDespawn.sqf';"];
 
 
 
@@ -81,7 +81,7 @@ LOC3_trigger = createTrigger ["EmptyDetector", [9763.765, 9395.391]];
 LOC3_trigger setTriggerArea [GLOBAL_AI_Trigger_Area_X, GLOBAL_AI_Trigger_Area_Y, 0, false];
 LOC3_trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 
-LOC3_trigger setTriggerStatements ["this", "execVM 'Warzone Locations\loc3.sqf'"," LOC_tracker = 3; execVM 'Warzone Locations\locDespawn.sqf';"];
+LOC3_trigger setTriggerStatements ["this", "execVM 'Warzone\Warzone Locations\loc3.sqf'"," LOC_tracker = 3; execVM 'Warzone\Warzone Locations\locDespawn.sqf';"];
 
 //Spawns / despawns the AI depending on if there are players nearby
 

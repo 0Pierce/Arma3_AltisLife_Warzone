@@ -1,4 +1,6 @@
-
+if(LOC_tracker < 1)then{
+	hint"Location Tracking Error";
+};
 
 
 if(LOC_tracker == 1) then{
@@ -195,11 +197,7 @@ if(LOC_tracker == 3) then{
 
 
 
-	//	_randomX = 
-	//	_randomY
 
-        // Spawn AI unit at the random position
-       // _unit = Location1 createUnit [GLOBAL_Soldier_Type3, _position, [], 0, "CAN_COLLIDE"];
  
 
 

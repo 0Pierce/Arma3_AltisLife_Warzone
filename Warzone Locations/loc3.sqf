@@ -96,21 +96,21 @@ _rotation = random(200);
 
 	_unit0 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		
 
 
-	LOC_count = 3;
+		LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+	 	execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 	execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 	}
@@ -118,22 +118,22 @@ _rotation = random(200);
 
 	_unit1 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		
 
 	
 	
-	LOC_count = 3;
+		LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+		 execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 		 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 		
 	}
@@ -141,44 +141,44 @@ _rotation = random(200);
 
 	_unit2 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 	
 
-	LOC_count = 3;
+		LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+	 	execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 		 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 	}
 }];
 
 	_unit3 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
 	
-	LOC_count = 3;
+		LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+	 	execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 		 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 		
@@ -187,23 +187,23 @@ _rotation = random(200);
 
 	_unit4 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
 
 
-	LOC_count = 3;
+		LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+		 execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 		 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 		
@@ -213,12 +213,12 @@ _rotation = random(200);
 
 	_unit5 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
@@ -227,9 +227,9 @@ _rotation = random(200);
 
 	LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+	 execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 		
@@ -239,12 +239,12 @@ _rotation = random(200);
 
 	_unit6 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
@@ -253,9 +253,9 @@ _rotation = random(200);
 
 	LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+	 execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 		
@@ -264,12 +264,12 @@ _rotation = random(200);
 
 	_unit7 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
@@ -278,9 +278,9 @@ _rotation = random(200);
 
 	LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+	 execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 		
@@ -289,12 +289,12 @@ _rotation = random(200);
 
 	_unit7 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
@@ -303,9 +303,9 @@ _rotation = random(200);
 
 	LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+	 execVM "Warzone\Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone\Warzone Locations\locRespawn.sqf";
 
 		
 	}
@@ -315,12 +315,12 @@ _rotation = random(200);
 
 	_unit8 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
@@ -329,9 +329,9 @@ _rotation = random(200);
 
 	LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+	 execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 		
@@ -341,12 +341,12 @@ _rotation = random(200);
 
 	_unit9 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
+	FAC3_unitsAlive = FAC3_unitsAlive -1;
+	hint format ["There are: %1 Guard/s remaining.", FAC3_unitsAlive];
 
 
 	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
+	if (FAC3_unitsAlive == 0) then{
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
@@ -355,9 +355,9 @@ _rotation = random(200);
 
 	LOC_count = 3;
 	//Calls in backup
-	 execVM "Warzone Locations\locReinforce.sqf";
+	 execVM "Warzone\Warzone Locations\locReinforce.sqf";
 	 //Begins respawn
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 		

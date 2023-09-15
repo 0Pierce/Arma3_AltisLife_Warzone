@@ -71,10 +71,11 @@
 				hint format[ "Unlocking in: %1s",_timeLeft];
 				sleep 1;
 				_timeLeft=_timeLeft-1;
-				LOC_tracker = 1;
+				
 				
 			};
-			execVM "Warzone Locations\locReinforce.sqf";
+			LOC_tracker = 1;
+			execVM "Warzone\Warzone Locations\locReinforce.sqf";
 			hint"Crate Unlocked!";
 			LOC1_loot lockInventory false;
 		}else{
@@ -109,7 +110,7 @@
 
 	//Begins respawn
 	LOC_count = 1;
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 	}
@@ -130,7 +131,7 @@
 
 	//Begins respawn
 	LOC_count = 1;
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 		
 	}
@@ -151,7 +152,7 @@
 
 	//Begins respawn
  	LOC_count = 1;
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 	}
 }];
@@ -172,7 +173,7 @@ _texta = "<t font ='EtelkaMonospaceProBold' align = 'center' size='1' color='#FF
 [_texta,/* poz x */ 0,/* poz y */ 1,/*durata*/ 5,/* fade in?*/ 1,0,txt5Layer] spawn BIS_fnc_dynamicText;
 	//Begins respawn
 	LOC_count = 1;
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 		
@@ -196,7 +197,7 @@ _texta = "<t font ='EtelkaMonospaceProBold' align = 'center' size='1' color='#FF
 
 	//Begins respawn
  	 LOC_count = 1;
- 	 execVM "Warzone Locations\locRespawn.sqf";
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
 
 		
