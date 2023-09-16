@@ -1,9 +1,4 @@
-//Spawns the composition for LOC3
-_XY3 = [9753.68, 9372.55];
 
-_Z3 = 0;
-0 = [_XY3, _Z3, call (compile (preprocessFileLineNumbers "Warzone\Warzone Locations\build\loc3Buildings.sqf"))] call BIS_fnc_ObjectsMapper;
-//_openColor = {220,20,60};
 
 marker1E = createMarker ["Mkr1E", [12294.837, 8879.797]];
 marker1 = createMarker ["Mkr1", [12294.837, 8879.797]];
@@ -47,4 +42,24 @@ marker13 = createMarker ["Mkr3", [9773.811, 9400.008]];
 
 
 
+
+
+//Starts warzone
 execVM "Warzone\WarzoneControl.sqf";
+//Spawns the first key
+execVM "Warzone\Warzone Locations\locKeySpawn.sqf";
+
+
+
+
+
+
+
+//_openColor = {220,20,60};
+
+
+
+
+
+
+

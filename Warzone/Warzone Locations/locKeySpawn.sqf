@@ -40,13 +40,9 @@ LOC3_Key6
 
 
 
-//Selects a random crate to put the key in
+//Puts the key into a random box
 Random_Location = selectRandom KEY_Spawn_Positions;
 Random_Crate = selectRandom Random_Location;
-//KEY_Spawn_Positions select Random_Location select Random_Crate addMagazineCargoGlobal ["Keys", 1];
-
-
-
 Random_Crate addMagazineCargoGlobal ["Keys", 1];
 
 
@@ -74,32 +70,65 @@ Lock3Count = 0;
 
 	
 
-
+	LOC3_Caller_count = 0;
 	LOC3_Unlocker addAction ["Unlock Crates",{
-	
-		
+		LOC3_Caller_count = LOC3_Caller_count+1;
+
+		//Makes sure only one person can call this action, onces its activated another person cannot call it
+
+		//TESTING ======================
+		if(LOC3_Caller_count <2) then{
+		//TESTING ======================
+					params ["_target", "_caller", "_actionId", "_arguments"];
 			hint"Unlocking";
 
 			_timeLeft = GLOBAL_KeyCrate_Open_Time;
-			//Sets the timer
-			while{_timeLeft >=0} do{
-				//Unsure if it shows to all players or not
+			//Sets the timer to open all the crates
+			
+		//Needs to check if player is still alive, if not cancel and reset
+				while{_timeLeft >=0 || Near_Crate == false} do{
+
+				//Makes sure the player is near the computer
+				if(Near_Crate == true) then{
+				
 				hint format[ "Unlocking in: %1s",_timeLeft];
 				sleep 1;
 				_timeLeft=_timeLeft-1;
+
+				//terminates the process if the player dies
+
+
+				//TESTING ======================
+				if(!alive _caller )then{
+					break;
+				}
+			//TESTING ======================
+				}else{
+					hint "You are too far";
+				}
+			
 				
 				
 			};
+
+			
+
 			//LOC_tracker = 1;
 			//execVM "Warzone\Warzone Locations\locReinforce.sqf";
 			hint"Crates Unlocked!";
-			
+			LOC3_Unlocker removeAction _actionId;
+
 	for "_i" from 0 to count KEY_Spawn_Positions -1 do{
 		KEY_Spawn_Positions select _i apply {_x lockInventory false};
 
 	}
 
 			
+
+		}else{
+			hint"One person at a time";
+		}
+
 		
 
 

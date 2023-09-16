@@ -4,7 +4,7 @@
 
 
 
-execVM "Warzone\Warzone Locations\locKeySpawn.sqf";
+
 
 _rotation = random(200);
 
@@ -15,7 +15,7 @@ _rotation = random(200);
 	
 
 
-	//Default marker for LOC1
+	//Default marker for LOC3
 	marker13E setMarkerShape "ELLIPSE";
 	marker13E setMarkerSize [100,100];
 	marker13E setMarkerColor "ColorRed";
