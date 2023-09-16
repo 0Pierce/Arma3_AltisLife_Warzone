@@ -4,13 +4,15 @@
 
 
 
-
+execVM "Warzone\Warzone Locations\locKeySpawn.sqf";
 
 _rotation = random(200);
 
 
-//AI SETUP
- //Soldier type
+
+
+
+	
 
 
 	//Default marker for LOC1
@@ -22,7 +24,7 @@ _rotation = random(200);
 	
 	marker13 setMarkerType "hd_warning";
 	marker13 setMarkerSize [1.5,1.5];
-	marker13 setMarkerColor "ColorRed";
+	marker13 setMarkerColor "ColorYellow";
 	marker13 setMarkerText "Outpost #1";
 
     
@@ -34,10 +36,10 @@ _rotation = random(200);
 
 	//Spawns units
 	_unit0 = Location3 createUnit [GLOBAL_Soldier_Type1, [9782.482, 9385.969, 3.122], [], 0, "CAN_COLLIDE"];
-    _unit1 = Location3 createUnit [GLOBAL_Soldier_Type2, [9780.734, 9396.107, 3.473], [], 0, "CAN_COLLIDE"];
+    _unit1 = Location3 createUnit [GLOBAL_Soldier_Type2, [9778.714, 9396.107, 3.473], [], 0, "CAN_COLLIDE"]; //Command post
     _unit2 = Location3 createUnit [GLOBAL_Soldier_Type3, [9765.111, 9419.481, 4.184], [], 0, "CAN_COLLIDE"];
 
-    _unit3 = Location3 createUnit [GLOBAL_Soldier_TypeTESTING, [9735.934, 9398.03, 10.390], [], 0, "CAN_COLLIDE"];
+    _unit3 = Location3 createUnit [GLOBAL_Soldier_TypeTESTING, [9735.934, 9388.03, 10.390], [], 0, "CAN_COLLIDE"];
     _unit4 = Location3 createUnit [GLOBAL_Soldier_Type2, [9737.923, 9399.543, 5.283], [], 0, "CAN_COLLIDE"];
 	_unit5 = Location3 createUnit [GLOBAL_Soldier_Type2, [9738.306, 9335.179, 4.750], [], 0, "CAN_COLLIDE"];
 	_unit6 = Location3 createUnit [GLOBAL_Soldier_Type2, [9759.152, 9325.284, 0.535], [], 0, "CAN_COLLIDE"];
@@ -77,7 +79,9 @@ _rotation = random(200);
 
 
 	
- 
+
+
+
 
 
 
@@ -94,6 +98,15 @@ _rotation = random(200);
 
 
 
+
+
+
+
+
+
+
+//Puts event handlers on all the AI guards
+
 	_unit0 addEventHandler ["Killed", {
 	params ["_unit", "_killer", "_instigator", "_useEffects"];
 	FAC3_unitsAlive = FAC3_unitsAlive -1;
@@ -105,7 +118,7 @@ _rotation = random(200);
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		
 
-
+		LOC_tracker = 3;
 		LOC_count = 3;
 	//Calls in backup
 	 	execVM "Warzone\Warzone Locations\locReinforce.sqf";
@@ -128,7 +141,7 @@ _rotation = random(200);
 		
 
 	
-	
+		LOC_tracker = 3;
 		LOC_count = 3;
 	//Calls in backup
 		 execVM "Warzone\Warzone Locations\locReinforce.sqf";
@@ -150,7 +163,7 @@ _rotation = random(200);
 		marker13 setMarkerText "Outpost #1 - RAIDED";
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 	
-
+		LOC_tracker = 3;
 		LOC_count = 3;
 	//Calls in backup
 	 	execVM "Warzone\Warzone Locations\locReinforce.sqf";
@@ -173,7 +186,7 @@ _rotation = random(200);
 		
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
-	
+		LOC_tracker = 3;
 		LOC_count = 3;
 	//Calls in backup
 	 	execVM "Warzone\Warzone Locations\locReinforce.sqf";
@@ -198,7 +211,7 @@ _rotation = random(200);
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
 
-
+		LOC_tracker = 3;
 		LOC_count = 3;
 	//Calls in backup
 		 execVM "Warzone\Warzone Locations\locReinforce.sqf";
@@ -224,7 +237,7 @@ _rotation = random(200);
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
 
-
+	LOC_tracker = 3;
 	LOC_count = 3;
 	//Calls in backup
 	 execVM "Warzone\Warzone Locations\locReinforce.sqf";
@@ -250,7 +263,7 @@ _rotation = random(200);
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
 
-
+	LOC_tracker = 3;
 	LOC_count = 3;
 	//Calls in backup
 	 execVM "Warzone\Warzone Locations\locReinforce.sqf";
@@ -275,7 +288,7 @@ _rotation = random(200);
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
 
-
+	LOC_tracker = 3;
 	LOC_count = 3;
 	//Calls in backup
 	 execVM "Warzone\Warzone Locations\locReinforce.sqf";
@@ -300,7 +313,7 @@ _rotation = random(200);
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
 
-
+	LOC_tracker = 3;
 	LOC_count = 3;
 	//Calls in backup
 	 execVM "Warzone\Warzone\Warzone Locations\locReinforce.sqf";
@@ -326,7 +339,7 @@ _rotation = random(200);
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
 
-
+	LOC_tracker = 3;
 	LOC_count = 3;
 	//Calls in backup
 	 execVM "Warzone\Warzone Locations\locReinforce.sqf";
@@ -352,7 +365,7 @@ _rotation = random(200);
 		txt5Layer = "txt5" call BIS_fnc_rscLayer;
 
 
-
+	LOC_tracker = 3;
 	LOC_count = 3;
 	//Calls in backup
 	 execVM "Warzone\Warzone Locations\locReinforce.sqf";

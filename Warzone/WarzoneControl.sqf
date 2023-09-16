@@ -4,9 +4,10 @@
 //Ensure you know what you are doing before changing
 
 
-//=============== * Things not to touch, unless you understand * ===============
+//=============== * Things not to touch, unless you understand well * ===============
+//LOC_count (Keeps track which locations need reinforcements)
 //LOC_tracker (Keeps track of which location needs to be despawned, respawned, or reinforcements sent to)
-//FAC1_unitsAlive (sets the amount of units which are expected to be GUARDING said base - does not include patrols)
+//FAC_unitsAlive (sets the amount of units which are expected to be GUARDING said base - does not include patrols)
 
 
 
@@ -32,6 +33,7 @@ GLOBAL_Reinforce_radius = 100;
 
 
 //Sets the type of soldiers that will spawn, you can modify their loudouts below
+//Soldiers that spawn in will have one of these templates, you can add more templates or make each soldier a different type
 GLOBAL_Soldier_Type1 = "B_G_Soldier_M_F";
 GLOBAL_Soldier_Type2 = "B_G_Soldier_M_F";
 GLOBAL_Soldier_Type3 = "B_G_Soldier_M_F";
@@ -51,6 +53,11 @@ GLOBAL_Soldier_TypeTESTING = "B_G_Soldier_LAT_F";
 
 //Testing civilian faction PVE
 //_hobo_Count = units group player arrayIntersect playableUnits;
+
+
+
+//Key spawn section
+
 
 //resistance setFriend [playerSide, 0]
 

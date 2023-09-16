@@ -20,3 +20,5 @@ sleep GLOBAL_AI_Despawn;
 LOC3_units apply {deleteVehicle _x};
 
 };
+
+

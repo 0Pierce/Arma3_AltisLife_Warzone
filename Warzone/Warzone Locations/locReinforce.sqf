@@ -187,11 +187,11 @@ if(LOC_tracker == 3) then{
 		_MARK_Y = 8155.558;
 		_HeliDrop3 = [9822.797, 8882.898];
 		_centerBase = [9773.811, 9400.008];
-		_Rein3HeliINFSpawn = [15612.216, 2809.427];
+		_Rein3HeliINFSpawn = [7511.622, 5765.288];
 		_Rein3HeliINFSpawn2 = [15112.216, 2809.427];
 		_center = 0;
 		_marker = getMarkerPos "marker13";
-	
+		_AITempSpawn = [8283, 7023.281];
 		
 		
 
@@ -201,15 +201,8 @@ if(LOC_tracker == 3) then{
  
 
 
-//Could use an array and loop for this, or just spawn a group instead. I personally like it all laid out.
-//But if you want to dynamically change the amount of troops then you will need an array
-	_unit0 = Location1 createUnit [GLOBAL_Soldier_Type1, [_randomX,_randomY ], [], 0, "CAN_COLLIDE"];
-    _unit1 = Location1 createUnit [GLOBAL_Soldier_Type2, [_randomX,_randomY ], [], 0, "CAN_COLLIDE"];
-    _unit2 = Location1 createUnit [GLOBAL_Soldier_Type3, [_randomX,_randomY ], [], 0, "CAN_COLLIDE"];
-    _unit3 = Location1 createUnit [GLOBAL_Soldier_Type4, [_randomX,_randomY ], [], 0, "CAN_COLLIDE"];
-    _unit4 = Location1 createUnit [GLOBAL_Soldier_Type2, [_randomX,_randomY ], [], 0, "CAN_COLLIDE"];
 
-	[_unit0, _unit1, _unit2, _unit3, _unit4] join Location1;
+
 	
 
 	
@@ -219,45 +212,44 @@ if(LOC_tracker == 3) then{
 	Location3Pilots = createGroup resistance;
 
 	//Heli pilots
-	_unitP0 = Location3Pilots createUnit [GLOBAL_Soldier_Type1, [_randomX,_randomY], [], 0, "NONE"];
+	_unitP0 = Location3Pilots createUnit [GLOBAL_Soldier_Type1, _AITempSpawn, [], 0, "NONE"];
 	
 
 	[_unitP0] join Location3Pilots;
 	Location3Pilots selectLeader _unitP0;
 
-	_unit0H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type1, [_randomX,_randomY], [], 0, "NONE"];
-    _unit1H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type2, [_randomX,_randomY], [], 0, "NONE"];
-    _unit2H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type3, [_randomX,_randomY], [], 0, "NONE"];
-    _unit3H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type4, [_randomX,_randomY], [], 0, "NONE"];
-    _unit4H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type2, [_randomX,_randomY], [], 0, "NONE"];
-	_unit5H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type1, [_randomX,_randomY], [], 0, "NONE"];
-    _unit6H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type2, [_randomX,_randomY], [], 0, "NONE"];
-    _unit7H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type3, [_randomX,_randomY], [], 0, "NONE"];
-    _unit8H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type4, [_randomX,_randomY], [], 0, "NONE"];
-    _unit9H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type2, [_randomX,_randomY], [], 0, "NONE"];
+	_unit0H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type1, _AITempSpawn, [], 0, "NONE"];
+    _unit1H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type2, _AITempSpawn, [], 0, "NONE"];
+    _unit2H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type3, _AITempSpawn, [], 0, "NONE"];
+    _unit3H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type4, _AITempSpawn, [], 0, "NONE"];
+    _unit4H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type2, _AITempSpawn, [], 0, "NONE"];
+	_unit5H = Location3ReinFINF createUnit [GLOBAL_Soldier_Type1, _AITempSpawn, [], 0, "NONE"];
 
-	[_unit0H, _unit1H, _unit2H, _unit3H, _unit4H,_unit5H,_unit6H,_unit7H,_unit8H,_unit9H] join Location3ReinFINF;
+
+	[_unit0H, _unit1H, _unit2H, _unit3H, _unit4H,_unit5H] join Location3ReinFINF;
 
 	Location3ReinFINF selectLeader _unit0H;
 	_heliInfUnits = units Location3ReinFINF;
 
 
 	
-	Location1ReinFA = createGroup resistance;
+	
 
 	
 	
 	//Heli is made global, its a fairly bad way of doing this, should have been stored in setVariable, but Im lazy
 	//Also, heli does not join group, only the pilot does
-	heli = createVehicle ["I_Heli_Light_03_unarmed_F", _Rein3HeliINFSpawn, [], 0, "FLY"];
-	heli lock 3;
-	heli lockInventory true;
+	
+	heliL3 = createVehicle ["I_Heli_Light_03_unarmed_F", _Rein3HeliINFSpawn, [], 0, "FLY"];
+	heliL3 lock 3;
+	heliL3 lockInventory true;
+	
 
-	_unitP0 moveInDriver heli;
+	_unitP0 moveInDriver heliL3;
 
 		{
 
-		_x moveInCargo heli;
+		_x moveInCargo heliL3;
 	} forEach _heliInfUnits;
 
 
@@ -274,7 +266,7 @@ if(LOC_tracker == 3) then{
 	_wpp3 setWaypointBehaviour "COMBAT";
 
 	
-	_wpp3 setWaypointStatements ["true","{deleteVehicle _x} forEach crew (heli) + [heli]"];
+	_wpp3 setWaypointStatements ["true","{deleteVehicle _x} forEach crew (heliL3) + [heliL3]"];
 	
 	
 
