@@ -20,7 +20,8 @@
 //=================================================
 GLOBAL_Patrol_Radius = 100; //Sets the max radius of how far the AI will patrol from their bases
 GLOBAL_AI_Despawn = 5; //Sets how long before the AI despawns after all players have left their trigger area (Seconds)
-GLOBAL_LootCrate_Unlock_Time = 3; //Sets the amount of seconds it takes to unlock a loot crate (Seconds)
+GLOBAL_LootCrate_Unlock_Time = 3; //Sets the amount of seconds it takes to unlock a loot crate, set this to a high number (Seconds) 
+GLOBAL_KeyCrate_Open_Time = 5; //Sets the amount of seconds it takes to open one key crate, set this to a low number (Seconds)
 GLOBAL_AI_Trigger_Area_X = 100;// X Coordinate Spawns the AI in when player reaches certain distance from location (Assume the center is in the middle of the compound)
 GLOBAL_AI_Trigger_Area_Y = 100;// Y Coordinate^^^^^^^^^^^^^^
 GLOBAL_AI_Respawn_Timer = 1000; // Sets the amount of seconds before the raided location gets refreshed (Set this to a high number)

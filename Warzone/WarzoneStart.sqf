@@ -1,5 +1,6 @@
 //Spawns the composition for LOC3
 _XY3 = [9753.68, 9372.55];
+
 _Z3 = 0;
 0 = [_XY3, _Z3, call (compile (preprocessFileLineNumbers "Warzone\Warzone Locations\build\loc3Buildings.sqf"))] call BIS_fnc_ObjectsMapper;
 //_openColor = {220,20,60};

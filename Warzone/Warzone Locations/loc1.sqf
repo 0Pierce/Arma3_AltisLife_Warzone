@@ -64,7 +64,8 @@
 		if ("Keys" in magazines player) then{
 			player removeItem "Keys";
 			hint"Crate Unlocking";
-
+			LOC_tracker = 1;
+			execVM "Warzone\Warzone Locations\locReinforce.sqf";
 			_timeLeft = GLOBAL_LootCrate_Unlock_Time;
 			while{_timeLeft >=0} do{
 				//Unsure if it shows to all players or not
@@ -74,8 +75,8 @@
 				
 				
 			};
-			LOC_tracker = 1;
-			execVM "Warzone\Warzone Locations\locReinforce.sqf";
+			
+			
 			hint"Crate Unlocked!";
 			LOC1_loot lockInventory false;
 		}else{
@@ -90,7 +91,7 @@
 	}, [],1,false,true,"","_this distance _target < 3"];
 
 
-	//"Warzone Locations\locLoot.sqf"
+	
 
 
 

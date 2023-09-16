@@ -7,14 +7,14 @@ Area size: 230
 Using orientation of objects: no
 */
 
-[
+ [
 	["Land_Cargo_House_V2_F",[4.65918,5.1084,0],303.318,1,0,[],"","",true,false], 
 	["Land_CampingChair_V2_F",[8.03516,-1.44238,-0.00256348],288.309,1,0,[],"","",true,false], 
 	["ShootingMat_01_Khaki_F",[8.1709,-2.76465,-5.72205e-005],249.058,1,0,[],"","",true,false], 
 	["Land_dirt_road_damage_long_03_F",[2.63867,-8.50488,-3.8147e-006],239.561,1,0,[],"","",true,false], 
 	["Land_CampingChair_V2_F",[9.02148,0.350586,-0.00313187],322.733,1,0,[],"","",true,false], 
 	["Land_dirt_road_damage_long_03_F",[-5.04297,-7.91504,0],111.654,1,0,[],"","",true,false], 
-	["Land_WoodenTable_small_F",[8.60449,-4.50293,0.00113678],298.666,1,0,[],"","",true,false], 
+	["Land_WoodenTable_small_F",[8.60449,-4.50293,0.00113678],298.666,1,0,[],"LOC3_Table","",true,false], 
 	["Land_DirtPatch_03_F",[10.3828,-1.61523,0],0,1,0,[],"","",true,false], 
 	["Campfire_burning_F",[10.4424,-1.95313,0.0232048],0,1,0,[],"","",true,false], 
 	//["Box_CSAT_Equip_F",[9.29688,-6.11523,0.00123596],23.3108,1,0,[],"doneB1","",true,false], 

@@ -1,13 +1,20 @@
 hint"Ran KeySpawn";
 
-LOC3_Key1 =  createVehicle ["Box_CSAT_Equip_F", [9781.915,9392.567,3.231]]; //Command Post
-LOC3_Key2 =  createVehicle ["Box_CSAT_Equip_F", [9762.994,9366.421]];//Camp site
-LOC3_Key3 =  createVehicle ["Box_CSAT_Equip_F", [9748.597,9348.902]]; //Tent Outside
+LOC3_Key1 = createVehicle ["Box_CSAT_Equip_F", [9781.915,9392.567,3.231]]; //Command Post
+LOC3_Key2 = createVehicle ["Box_CSAT_Equip_F", [9762.994,9366.421]];//Camp site
+LOC3_Key3 = createVehicle ["Box_CSAT_Equip_F", [9748.597,9348.902]]; //Tent Outside
 LOC3_Key4 = createVehicle ["Box_CSAT_Equip_F", [9738.28,9387.251]]; //Outside House
 LOC3_Key5 = createVehicle ["Box_CSAT_Equip_F", [9724.453,9360.099]]; LOC3_Key5 setDir 90; //Tent Inside
 LOC3_Key6 = createVehicle ["Box_CSAT_Equip_F", [9731.193,9397.106,6.102]]; //2nd Floor House
+//LOC3_Unlocker = createVehicle ["Land_MultiScreenComputer_01_black_F", [9763.171,9368.1785,0.865]]; LOC3_Unlocker setDir 210;
 
+//Grabs the ID of the table from LOC3Buildings and then creates a computer on top of said table that is then stored in LOC3_Unlocker.
+//3am :(
+LOC3_Temp = [[LOC3_Table, "TOP"], "Land_MultiScreenComputer_01_black_F",1,[0,0,0], 260] call BIS_fnc_spawnObjects;
 
+LOC3_Unlocker = LOC3_Temp select 0;
+
+//LOC3_Unlocker setDir 210;
 //Creates a 2D array that stores all the locations a key can spawn
 KEY_Spawn_Positions = [
 //Location 3 Array
@@ -18,7 +25,6 @@ LOC3_Key3,
 LOC3_Key4,  
 LOC3_Key5,  
 LOC3_Key6
-
 ]
 //KEY_Spawn_LOC4=[];
 //KEY_Spawn_LOC5=[];
@@ -28,19 +34,96 @@ LOC3_Key6
 ];
 
 
+//["Land_WoodenTable_small_F",[8.60449,-4.50293,0.00113678],298.666,1,0,[],"","",true,false] 
+//["Land_MultiScreenComputer_01_black_F",[8.60449,-4.60449,-0.00239563],208.121,1,0,[],"","",true,false] 
+
+
+
+
+//Selects a random crate to put the key in
+Random_Location = selectRandom KEY_Spawn_Positions;
+Random_Crate = selectRandom Random_Location;
+//KEY_Spawn_Positions select Random_Location select Random_Crate addMagazineCargoGlobal ["Keys", 1];
+
+
+
+Random_Crate addMagazineCargoGlobal ["Keys", 1];
+
+
+
 
 //Goes through the entire array of crates and deletes all their contents
 for "_i" from 0 to count KEY_Spawn_Positions -1 do
 {
-	
-
 	KEY_Spawn_Positions select _i apply {clearItemCargoGlobal _x};
-
 };
 
-//Selects a random crate to put the key in
-Random_Location = selectRandom KEY_Spawn_Positions;
-Random_Crate = floor random count Random_Location;
-KEY_Spawn_Positions select Random_Location select Random_Crate addItemCargoGlobal ["Keys", 1];
+//Locks all the crates inventories
+for "_i" from 0 to count KEY_Spawn_Positions -1 do
+{
+	KEY_Spawn_Positions select _i apply {_x lockInventory true};
+};
 
 
+
+Lock3Count = 0;
+//Lets players open the crates
+
+
+
+
+	
+
+
+	LOC3_Unlocker addAction ["Unlock Crates",{
+	
+		
+			hint"Unlocking";
+
+			_timeLeft = GLOBAL_KeyCrate_Open_Time;
+			//Sets the timer
+			while{_timeLeft >=0} do{
+				//Unsure if it shows to all players or not
+				hint format[ "Unlocking in: %1s",_timeLeft];
+				sleep 1;
+				_timeLeft=_timeLeft-1;
+				
+				
+			};
+			//LOC_tracker = 1;
+			//execVM "Warzone\Warzone Locations\locReinforce.sqf";
+			hint"Crates Unlocked!";
+			
+	for "_i" from 0 to count KEY_Spawn_Positions -1 do{
+		KEY_Spawn_Positions select _i apply {_x lockInventory false};
+
+	}
+
+			
+		
+
+
+	
+	
+	
+	
+		
+		
+	}, [],6,false,true,"","_this distance _target < 4"];
+
+	
+
+
+   
+
+
+
+
+
+
+
+
+
+
+	
+	
