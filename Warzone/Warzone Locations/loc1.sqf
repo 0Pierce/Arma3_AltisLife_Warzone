@@ -58,6 +58,39 @@
     LOC1_loot = createVehicle ["IG_supplyCrate_F", [12287.366,8894.67]];
 	LOC1_loot lockInventory true;
 
+//Checks if the player has the key to open the crate
+[LOC3_Unlocker,["Unlock",{
+
+		if ("Keys" in magazines player) then{
+			player removeItem "Keys";
+			hint"Crate Unlocking";
+			LOC_tracker = 1;
+			execVM "Warzone\Warzone Locations\locReinforce.sqf";
+			_timeLeft = GLOBAL_LootCrate_Unlock_Time;
+			while{_timeLeft >=0} do{
+				//Unsure if it shows to all players or not
+				hint format[ "Unlocking in: %1s",_timeLeft];
+				sleep 1;
+				_timeLeft=_timeLeft-1;
+				
+				
+			};
+			
+			
+			hint"Crate Unlocked!";
+			LOC1_loot lockInventory false;
+		}else{
+			hint"Missing Key";
+		}
+
+
+
+
+},[],6,false,true,"","_this distance _target < 3"]] remoteExec ["addAction",0];
+
+
+
+/*
 	//Checks if the player has the key to open the crate
     LOC1_loot addAction ["Unlock",{
 	
@@ -91,7 +124,7 @@
 	}, [],1,false,true,"","_this distance _target < 3"];
 
 
-	
+	*/
 
 
 

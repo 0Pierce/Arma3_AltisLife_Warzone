@@ -79,7 +79,7 @@ LOC3_KEY_trigger setTriggerStatements ["this", "Near_Crate = true", "Near_Crate 
 //resistance setFriend [playerSide, 0]
 
  _players = allPlayers - entities "HeadlessClient_F";
-//_players apply {addRating -2000};
+//_players apply {addRating -5000};
 //Tells the despawn.sqf which location to despawn
 LOC_tracker = 0;
 
