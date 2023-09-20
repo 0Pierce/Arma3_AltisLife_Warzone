@@ -68,7 +68,7 @@
 			execVM "Warzone\Warzone Locations\locReinforce.sqf";
 			_timeLeft = GLOBAL_LootCrate_Unlock_Time;
 			while{_timeLeft >=0} do{
-				//Unsure if it shows to all players or not
+				
 				hint format[ "Unlocking in: %1s",_timeLeft];
 				sleep 1;
 				_timeLeft=_timeLeft-1;

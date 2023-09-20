@@ -18,6 +18,8 @@ LOC3_Unlocker = LOC3_Temp select 0;
 //Creates a 2D array that stores all the locations a key can spawn
 KEY_Spawn_Positions = [
 //Location 3 Array
+
+//Outpost #1
 [
 LOC3_Key1,
 LOC3_Key2,  
@@ -26,6 +28,7 @@ LOC3_Key4,
 LOC3_Key5,  
 LOC3_Key6
 ]
+
 //KEY_Spawn_LOC4=[];
 //KEY_Spawn_LOC5=[];
 //KEY_Spawn_LOC6=[];
@@ -77,7 +80,7 @@ LOC3_Caller_count = 0;
 		//TESTING ======================
 		if(LOC3_Caller_count <2) then{
 		//TESTING ======================
-					params ["_target", "_caller", "_actionId", "_arguments"];
+			params ["_target", "_caller", "_actionId", "_arguments"];
 			hint"Unlocking";
 
 			_timeLeft = GLOBAL_KeyCrate_Open_Time;
@@ -105,7 +108,7 @@ LOC3_Caller_count = 0;
 					hint "You are too far";
 				}
 			
-				
+			
 				
 			};
 
