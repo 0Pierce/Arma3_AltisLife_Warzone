@@ -121,7 +121,7 @@ LOC3_Caller_count = 0;
 
 	for "_i" from 0 to count KEY_Spawn_Positions -1 do{
 		KEY_Spawn_Positions select _i apply {_x lockInventory false};
-
+		
 	}
 
 			

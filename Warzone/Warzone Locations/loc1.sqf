@@ -58,8 +58,9 @@
     LOC1_loot = createVehicle ["IG_supplyCrate_F", [12287.366,8894.67]];
 	LOC1_loot lockInventory true;
 
+
 //Checks if the player has the key to open the crate
-[LOC3_Unlocker,["Unlock",{
+[LOC1_loot,["Unlock",{
 
 		if ("Keys" in magazines player) then{
 			player removeItem "Keys";
@@ -86,7 +87,7 @@
 
 
 
-},[],6,false,true,"","_this distance _target < 3"]] remoteExec ["addAction",0];
+},[],6,false,true,"","_this distance _target < 3"]] remoteExec ["addAction",0,true];
 
 
 
