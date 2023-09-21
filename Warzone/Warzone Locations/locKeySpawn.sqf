@@ -60,7 +60,8 @@ for "_i" from 0 to count KEY_Spawn_Positions -1 do
 //Locks all the crates inventories
 for "_i" from 0 to count KEY_Spawn_Positions -1 do
 {
-	 KEY_Spawn_Positions select _i apply {_x lockInventory true};
+	 //KEY_Spawn_Positions select _i apply {_x lockInventory true};
+	 KEY_Spawn_Positions select _i apply {[_x, true] remoteExec ["lockInventory", _x], true};
 };
 
 
@@ -120,7 +121,7 @@ LOC3_Caller_count = 0;
 			LOC3_Unlocker removeAction _actionId;
 
 	for "_i" from 0 to count KEY_Spawn_Positions -1 do{
-		KEY_Spawn_Positions select _i apply {[_x, false] remoteExec ["lockInventory", _x]};
+		KEY_Spawn_Positions select _i apply {[_x, false] remoteExec ["lockInventory", _x, true]};
 	
 		
 		
