@@ -56,7 +56,9 @@
 	LOC1_units append units Location1_Patrol;
 	
     LOC1_loot = createVehicle ["IG_supplyCrate_F", [12287.366,8894.67]];
-	LOC1_loot lockInventory true;
+	//LOC1_loot lockInventory true;
+	//Locks the inventory and enables JIP
+	LOC1_loot, true remoteExec ["lockInventory", LOC1_loot, true];
 
 
 //Checks if the player has the key to open the crate
@@ -79,7 +81,8 @@
 			
 			
 			hint"Crate Unlocked!";
-			LOC1_loot lockInventory false;
+			//LOC1_loot lockInventory false;
+			LOC1_loot, false remoteExec ["lockInventory", LOC1_loot, true];
 		}else{
 			hint"Missing Key";
 		}
@@ -91,41 +94,8 @@
 
 
 
-/*
-	//Checks if the player has the key to open the crate
-    LOC1_loot addAction ["Unlock",{
-	
-		if ("Keys" in magazines player) then{
-			player removeItem "Keys";
-			hint"Crate Unlocking";
-			LOC_tracker = 1;
-			execVM "Warzone\Warzone Locations\locReinforce.sqf";
-			_timeLeft = GLOBAL_LootCrate_Unlock_Time;
-			while{_timeLeft >=0} do{
-				//Unsure if it shows to all players or not
-				hint format[ "Unlocking in: %1s",_timeLeft];
-				sleep 1;
-				_timeLeft=_timeLeft-1;
-				
-				
-			};
-			
-			
-			hint"Crate Unlocked!";
-			LOC1_loot lockInventory false;
-		}else{
-			hint"Missing Key";
-		}
-
-	
-	
-	
-	
-	
-	}, [],1,false,true,"","_this distance _target < 3"];
 
 
-	*/
 
 
 
