@@ -12,6 +12,9 @@ LOC3_Key6 = createVehicle ["Box_CSAT_Equip_F", [9731.193,9397.106,6.102]]; //2nd
 //3am :(
 LOC3_Temp = [[LOC3_Table, "TOP"], "Land_MultiScreenComputer_01_black_F",1,[0,0,0], 260] call BIS_fnc_spawnObjects;
 
+
+
+
 LOC3_Unlocker = LOC3_Temp select 0;
 
 //LOC3_Unlocker setDir 210;
@@ -19,6 +22,8 @@ LOC3_Unlocker = LOC3_Temp select 0;
 KEY_Spawn_Positions = [
 //Location 3 Array
 
+
+//Index 0 Of Master array
 //Outpost #1
 [
 LOC3_Key1,
@@ -29,9 +34,7 @@ LOC3_Key5,
 LOC3_Key6
 ]
 
-//KEY_Spawn_LOC4=[];
-//KEY_Spawn_LOC5=[];
-//KEY_Spawn_LOC6=[];
+
 
 
 ];
@@ -57,16 +60,33 @@ for "_i" from 0 to count KEY_Spawn_Positions -1 do
 	KEY_Spawn_Positions select _i apply {clearItemCargoGlobal _x};
 };
 
+
+//ORIGINAL
+/*
 //Locks all the crates inventories
 for "_i" from 0 to count KEY_Spawn_Positions -1 do
 {
 	 //KEY_Spawn_Positions select _i apply {_x lockInventory true};
-	 KEY_Spawn_Positions select _i apply {[_x, true] remoteExec ["lockInventory", _x], true};
+	 KEY_Spawn_Positions select _i apply {[_x, true] remoteExecCall ["lockInventory", _x], true};
 };
+*/
 
 
+//Chat GPT
+/*
+{
+	 //KEY_Spawn_Positions select 0 apply {[_x, true] remoteExecCall ["lockInventory", _x], true};
+	 [_x,"true"] remoteExec ["lockInventory", [0, -2] select isDedicated,true];
+    
+} forEach KEY_Spawn_Positions;
+*/
 
-Lock3Count = 0;
+{
+    [_x,true] remoteExec ["lockInventory", [0, -2] select isDedicated,true];
+} forEach (KEY_Spawn_Positions select 0);
+
+
+//Lock3Count = 0;
 //Lets players open the crates
 
 LOC3_Caller_count = 0;
@@ -92,18 +112,24 @@ LOC3_Caller_count = 0;
 
 				//Makes sure the player is near the computer
 				if(Near_Crate == true) then{
-				
-				hint format[ "Unlocking in: %1s",_timeLeft];
+				["Unlocking in: %1s",_timeLeft] remoteExecCall ["hint format", 0];
+
+
+				hint format["Unlocking in: %1s",_timeLeft];
+				//format ["%1 Message",_timeLeft] remoteExec ["hint", [0,-2] select isDedicated];
 				sleep 1;
 				_timeLeft=_timeLeft-1;
 
-				//terminates the process if the player dies
+				
 
 
 				//TESTING ======================
 				if(!alive _caller )then{
 					break;
+				}else{
+					format ["Ur dead"] remoteExec ["hint", [0,-2] select isDedicated];
 				}
+
 			//TESTING ======================
 				}else{
 					hint "You are too far";
@@ -115,17 +141,21 @@ LOC3_Caller_count = 0;
 
 			
 
-			//LOC_tracker = 1;
-			//execVM "Warzone\Warzone Locations\locReinforce.sqf";
+		
 			hint"Crates Unlocked!";
 			LOC3_Unlocker removeAction _actionId;
 
-	for "_i" from 0 to count KEY_Spawn_Positions -1 do{
-		KEY_Spawn_Positions select _i apply {[_x, false] remoteExec ["lockInventory", _x, true]};
-	
-		
-		
-	}
+
+
+
+
+	{
+    [_x,false] remoteExec ["lockInventory", [0, -2] select isDedicated,true];
+} forEach (KEY_Spawn_Positions select 0);
+
+
+
+
 
 			
 
@@ -185,91 +215,6 @@ LOC3_Caller_count = 0;
 
 
 
-
-
-
-
-
-
-
-//Add action that isnt global
-
-/*
-	LOC3_Caller_count = 0;
-	 LOC3_Unlocker remoteExec addAction ["Unlock Crates",{
-		
-		LOC3_Caller_count = LOC3_Caller_count+1;
-
-		//Makes sure only one person can call this action, onces its activated another person cannot call it
-
-		//TESTING ======================
-		if(LOC3_Caller_count <2) then{
-		//TESTING ======================
-					params ["_target", "_caller", "_actionId", "_arguments"];
-			hint"Unlocking";
-
-			_timeLeft = GLOBAL_KeyCrate_Open_Time;
-			//Sets the timer to open all the crates
-			
-		//Needs to check if player is still alive, if not cancel and reset
-				while{_timeLeft >=0 || Near_Crate == false} do{
-
-				//Makes sure the player is near the computer
-				if(Near_Crate == true) then{
-				
-				hint format[ "Unlocking in: %1s",_timeLeft];
-				sleep 1;
-				_timeLeft=_timeLeft-1;
-
-				//terminates the process if the player dies
-
-
-				//TESTING ======================
-				if(!alive _caller )then{
-					break;
-				}
-			//TESTING ======================
-				}else{
-					hint "You are too far";
-				}
-			
-				
-				
-			};
-
-			
-
-			//LOC_tracker = 1;
-			//execVM "Warzone\Warzone Locations\locReinforce.sqf";
-			hint"Crates Unlocked!";
-			LOC3_Unlocker removeAction _actionId;
-
-	for "_i" from 0 to count KEY_Spawn_Positions -1 do{
-		KEY_Spawn_Positions select _i apply {_x lockInventory false};
-
-	}
-
-			
-
-		}else{
-			hint"One person at a time";
-		}
-
-		
-
-
-	
-	
-	
-	
-		
-		
-	}, [],6,false,true,"","_this distance _target < 4"];
-
-	
-
-
-   */
 
 
 

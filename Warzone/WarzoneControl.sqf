@@ -66,7 +66,7 @@ LOC3_KEY_trigger = createTrigger ["EmptyDetector", [9762.25,9368]];
 LOC3_KEY_trigger setTriggerArea [3,3, 0, false];
 LOC3_KEY_trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 
-LOC3_KEY_trigger setTriggerStatements ["this", "Near_Crate = true", "Near_Crate = false"];
+LOC3_KEY_trigger setTriggerStatements ["this", "Near_Crate = true;", "Near_Crate = false;"];
 
 
 

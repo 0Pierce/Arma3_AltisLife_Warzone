@@ -1,4 +1,12 @@
 
+//Hint not working for computer at LOC3
+//Countdown not starting at LOC3
+
+//Crate at LOC1 inventory open for some, locked for olthers
+//Also not opening for all once unlocked
+
+
+
  //Soldier type
 
 
