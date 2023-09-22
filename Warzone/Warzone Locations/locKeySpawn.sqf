@@ -72,14 +72,6 @@ for "_i" from 0 to count KEY_Spawn_Positions -1 do
 */
 
 
-//Chat GPT
-/*
-{
-	 //KEY_Spawn_Positions select 0 apply {[_x, true] remoteExecCall ["lockInventory", _x], true};
-	 [_x,"true"] remoteExec ["lockInventory", [0, -2] select isDedicated,true];
-    
-} forEach KEY_Spawn_Positions;
-*/
 
 {
     [_x,true] remoteExec ["lockInventory", [0, -2] select isDedicated,true];
@@ -99,39 +91,48 @@ LOC3_Caller_count = 0;
 		//Makes sure only one person can call this action, onces its activated another person cannot call it
 
 		//TESTING ======================
-		if(LOC3_Caller_count <2) then{
+		
 		//TESTING ======================
 			params ["_target", "_caller", "_actionId", "_arguments"];
 			hint"Unlocking";
+			systemchat "Ran unlock";
 
-			_timeLeft = GLOBAL_KeyCrate_Open_Time;
+			//The timeleft variable not actually getting updated because the globalKeyCrate is begin run on server only needs to be ran on clients too
+			timeLeft = GLOBAL_KeyCrate_Open_Time;
+			timeLeft = 5;
 			//Sets the timer to open all the crates
 			
 		//Needs to check if player is still alive, if not cancel and reset
-				while{_timeLeft >=0 || Near_Crate == false} do{
+			
+			//Not entering loop
+				while{timeLeft >=0 or Near_Crate == false} do{
 
 				//Makes sure the player is near the computer
 				if(Near_Crate == true) then{
-				["Unlocking in: %1s",_timeLeft] remoteExecCall ["hint format", 0];
+				systemchat "Player detected";
+				["Unlocking in: %1s",timeLeft] remoteExecCall ["hint format", 0];
 
 
-				hint format["Unlocking in: %1s",_timeLeft];
+				
+				hint format["Unlocking in: %1s",timeLeft];
 				//format ["%1 Message",_timeLeft] remoteExec ["hint", [0,-2] select isDedicated];
 				sleep 1;
-				_timeLeft=_timeLeft-1;
+				timeLeft=timeLeft-1;
 
 				
 
-
+				//If player is alive
 				//TESTING ======================
 				if(!alive _caller )then{
 					break;
 				}else{
-					format ["Ur dead"] remoteExec ["hint", [0,-2] select isDedicated];
+					format ["Ur alive"] remoteExec ["hint", [0,-2] select isDedicated];
 				}
 
 			//TESTING ======================
 				}else{
+					systemchat "Player not detect";
+					
 					hint "You are too far";
 				}
 			
@@ -140,15 +141,15 @@ LOC3_Caller_count = 0;
 			};
 
 			
-
-		
+			systemchat format ["Player not detect %1", timeLeft];
+			systemchat "Unlocked";
 			hint"Crates Unlocked!";
 			LOC3_Unlocker removeAction _actionId;
 
 
 
 
-
+//Unlocks the crates
 	{
     [_x,false] remoteExec ["lockInventory", [0, -2] select isDedicated,true];
 } forEach (KEY_Spawn_Positions select 0);
@@ -159,9 +160,7 @@ LOC3_Caller_count = 0;
 
 			
 
-		}else{
-			hint"One person at a time";
-		}
+	
 
 		
 

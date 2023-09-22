@@ -47,7 +47,7 @@ marker13 = createMarker ["Mkr3", [9773.811, 9400.008]];
 //Starts warzone
 execVM "Warzone\WarzoneControl.sqf";
 //Spawns the first key
-execVM "Warzone\Warzone Locations\locKeySpawn.sqf";
+execVM "Warzone\Warzone Locations\locKeySpawn.sqf"
 
 
 

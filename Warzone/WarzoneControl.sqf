@@ -64,8 +64,12 @@ Near_Crate = false;
 0 = [_XY3, _Z3, call (compile (preprocessFileLineNumbers "Warzone\Warzone Locations\build\loc3Buildings.sqf"))] call BIS_fnc_ObjectsMapper;
 LOC3_KEY_trigger = createTrigger ["EmptyDetector", [9762.25,9368]];
 LOC3_KEY_trigger setTriggerArea [3,3, 0, false];
+
+
+//Its not detecting player within trigger
 LOC3_KEY_trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 
+//Executes first line on trigger activation, and second on trigger deactivation
 LOC3_KEY_trigger setTriggerStatements ["this", "Near_Crate = true;", "Near_Crate = false;"];
 
 
