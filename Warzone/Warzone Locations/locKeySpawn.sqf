@@ -2,6 +2,7 @@ hint"Ran KeySpawn";
 
 LOC3_Key1 = createVehicle ["Box_CSAT_Equip_F", [9781.915,9392.567,3.231]]; //Command Post
 LOC3_Key2 = createVehicle ["Box_CSAT_Equip_F", [9762.994,9366.421]];//Camp site
+
 LOC3_Key3 = createVehicle ["Box_CSAT_Equip_F", [9748.597,9348.902]]; //Tent Outside
 LOC3_Key4 = createVehicle ["Box_CSAT_Equip_F", [9738.28,9387.251]]; //Outside House
 LOC3_Key5 = createVehicle ["Box_CSAT_Equip_F", [9724.453,9360.099]]; LOC3_Key5 setDir 90; //Tent Inside
@@ -12,8 +13,11 @@ LOC3_Key6 = createVehicle ["Box_CSAT_Equip_F", [9731.193,9397.106,6.102]]; //2nd
 //3am :(
 LOC3_Temp = [[LOC3_Table, "TOP"], "Land_MultiScreenComputer_01_black_F",1,[0,0,0], 260] call BIS_fnc_spawnObjects;
 
+LOC3_TEST = createVehicle ["IG_supplyCrate_F", [9752.994,9366.421]];// NEAR Camp site
 
 
+
+LOC3_TEST, true remoteExec ["lockInventory", LOC3_TEST, true];
 
 LOC3_Unlocker = LOC3_Temp select 0;
 
@@ -33,6 +37,7 @@ LOC3_Key4,
 LOC3_Key5,  
 LOC3_Key6
 ]
+
 
 
 
@@ -78,6 +83,10 @@ for "_i" from 0 to count KEY_Spawn_Positions -1 do
 } forEach (KEY_Spawn_Positions select 0);
 
 
+
+//https://community.bistudio.com/wiki/publicVariableServer
+//publicVariableServer
+
 //Lock3Count = 0;
 //Lets players open the crates
 
@@ -105,10 +114,11 @@ LOC3_Caller_count = 0;
 		//Needs to check if player is still alive, if not cancel and reset
 			systemchat format ["player detect %1",Near_Crate];
 			//Not entering loop
-				while{timeLeft >=0 || Near_Crate == false} do{
+			//|| Near_Crate == false
+				while{timeLeft > 0} do{
 				systemchat "Ran loop";
 				//Makes sure the player is near the computer
-				if(Near_Crate == true) then{
+				//if(Near_Crate == true) then{
 				systemchat "Player detected";
 				["Unlocking in: %1s",timeLeft] remoteExecCall ["hint format", 0];
 
@@ -130,11 +140,11 @@ LOC3_Caller_count = 0;
 				}
 */
 			//TESTING ======================
-				}else{
-					systemchat "Player not detect";
+			//	}else{
+			//		systemchat "Player not detect";
 					
-					hint "You are too far";
-				}
+			//		hint "You are too far";
+			//	}
 			
 			
 				
@@ -146,17 +156,24 @@ LOC3_Caller_count = 0;
 			hint"Crates Unlocked!";
 			LOC3_Unlocker removeAction _actionId;
 
+			
+			LOC3_TEST lockInventory true;
+			{
+				KEY_Spawn_Positions, true remoteExec ["lockInventory", LOC3_TEST, true];
+				//[_x,false] remoteExec ["lockInventory",0, true];
+   				systemchat "UNLOCKED CRATE";
+			} forEach (KEY_Spawn_Positions select 0);
 
-
+			systemchat "TESTING FOR GAY ASS ERROR";
 
 //Unlocks the crates
+
+
+/*
 	{
-    [_x,false] remoteExec ["lockInventory", [0, -2] select isDedicated,true];
+    _x lockInventory false;
 } forEach (KEY_Spawn_Positions select 0);
-
-
-
-
+*/
 
 			
 
@@ -174,8 +191,6 @@ LOC3_Caller_count = 0;
 
 
 },[],6,false,true,"","_this distance _target < 3"]] remoteExec ["addAction",0];
-
-
 
 
 
