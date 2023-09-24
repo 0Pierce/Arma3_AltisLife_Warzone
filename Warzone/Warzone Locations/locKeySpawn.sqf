@@ -103,10 +103,10 @@ LOC3_Caller_count = 0;
 			//Sets the timer to open all the crates
 			
 		//Needs to check if player is still alive, if not cancel and reset
-			
+			systemchat format ["player detect %1",Near_Crate];
 			//Not entering loop
-				while{timeLeft >=0 or Near_Crate == false} do{
-
+				while{timeLeft >=0 || Near_Crate == false} do{
+				systemchat "Ran loop";
 				//Makes sure the player is near the computer
 				if(Near_Crate == true) then{
 				systemchat "Player detected";
@@ -120,7 +120,7 @@ LOC3_Caller_count = 0;
 				timeLeft=timeLeft-1;
 
 				
-
+/*
 				//If player is alive
 				//TESTING ======================
 				if(!alive _caller )then{
@@ -128,7 +128,7 @@ LOC3_Caller_count = 0;
 				}else{
 					format ["Ur alive"] remoteExec ["hint", [0,-2] select isDedicated];
 				}
-
+*/
 			//TESTING ======================
 				}else{
 					systemchat "Player not detect";
