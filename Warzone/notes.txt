@@ -1,0 +1,7 @@
+
+1) Spawns in every time player enters that
+ LOC3_trigger setTriggerStatements ["this", "execVM 'Warzone\Warzone Locations\loc3.sqf'"," LOC_tracker = 3; execVM 'Warzone\Warzone Locations\locDespawn.sqf';"];
+
+2) Crates inventory accessible even though they are locked (Locality Issue)
+
+3) Crates not unlocking

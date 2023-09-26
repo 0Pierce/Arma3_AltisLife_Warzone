@@ -109,6 +109,9 @@ LOC3_trigger = createTrigger ["EmptyDetector", [9763.765, 9395.391]];
 LOC3_trigger setTriggerArea [GLOBAL_AI_Trigger_Area_X, GLOBAL_AI_Trigger_Area_Y, 0, false, -1];
 LOC3_trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 
+
+
+//FIX SPAWNING IN MULTIPLE TIMES WHEN MORE THAN ONE PLAYER ENTERS
 LOC3_trigger setTriggerStatements ["this", "execVM 'Warzone\Warzone Locations\loc3.sqf'"," LOC_tracker = 3; execVM 'Warzone\Warzone Locations\locDespawn.sqf';"];
 
 //Spawns / despawns the AI depending on if there are players nearby

@@ -58,7 +58,6 @@ Random_Crate addMagazineCargoGlobal ["Keys", 1];
 
 
 
-
 //Goes through the entire array of crates and deletes all their contents
 for "_i" from 0 to count KEY_Spawn_Positions -1 do
 {
@@ -76,12 +75,16 @@ for "_i" from 0 to count KEY_Spawn_Positions -1 do
 };
 */
 
-
-
+LOC3_TEST lockInventory true;
+//Lock crates
 {
     [_x,true] remoteExec ["lockInventory", [0, -2] select isDedicated,true];
 } forEach (KEY_Spawn_Positions select 0);
 
+for "_i" from 0 to count KEY_Spawn_Positions -1 do
+{
+	KEY_Spawn_Positions select _i apply {_x lockInventory true};
+};
 
 
 //https://community.bistudio.com/wiki/publicVariableServer
@@ -104,6 +107,9 @@ LOC3_Caller_count = 0;
 		//TESTING ======================
 			params ["_target", "_caller", "_actionId", "_arguments"];
 			hint"Unlocking";
+
+				
+    		private _lockedInventorys = _arguments select 0;
 			systemchat "Ran unlock";
 
 			//The timeleft variable not actually getting updated because the globalKeyCrate is begin run on server only needs to be ran on clients too
@@ -120,6 +126,7 @@ LOC3_Caller_count = 0;
 				//Makes sure the player is near the computer
 				//if(Near_Crate == true) then{
 				systemchat "Player detected";
+				
 				["Unlocking in: %1s",timeLeft] remoteExecCall ["hint format", 0];
 
 
@@ -157,16 +164,18 @@ LOC3_Caller_count = 0;
 			LOC3_Unlocker removeAction _actionId;
 
 			
-			LOC3_TEST lockInventory true;
+			
 			{
-				KEY_Spawn_Positions, true remoteExec ["lockInventory", LOC3_TEST, true];
-				//[_x,false] remoteExec ["lockInventory",0, true];
-   				systemchat "UNLOCKED CRATE";
+				KEY_Spawn_Positions, false remoteExec ["lockInventory", LOC3_TEST, true];
 			} forEach (KEY_Spawn_Positions select 0);
+
+			
+			
 
 			systemchat "TESTING FOR GAY ASS ERROR";
 
 //Unlocks the crates
+
 
 
 /*

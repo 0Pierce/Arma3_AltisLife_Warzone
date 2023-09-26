@@ -67,6 +67,7 @@
 	//LOC1_loot lockInventory true;
 	//Locks the inventory and enables JIP
 	LOC1_loot, true remoteExec ["lockInventory", LOC1_loot, true];
+	
 
 
 //Checks if the player has the key to open the crate
