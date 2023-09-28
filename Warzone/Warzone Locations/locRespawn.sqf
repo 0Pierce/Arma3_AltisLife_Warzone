@@ -1,6 +1,6 @@
 
 
-
+//Sleeps the designated amount before respawning each locations
 if(LOC_count == 1) then{
 
 	hint "respawn started on LOC1";

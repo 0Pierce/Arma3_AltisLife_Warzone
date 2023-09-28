@@ -241,7 +241,9 @@ if(LOC_tracker == 3) then{
 	//Also, heli does not join group, only the pilot does
 	
 	heliL3 = createVehicle ["I_Heli_Light_03_unarmed_F", _Rein3HeliINFSpawn, [], 0, "FLY"];
+	//Locks the heli for all players 
 	heliL3 lock 3;
+	//Locks inventory
 	heliL3 lockInventory true;
 	
 

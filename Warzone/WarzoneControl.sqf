@@ -33,14 +33,54 @@ GLOBAL_Computer_Crate_Open_Radius = 3; //Sets the radius a player must be within
 GLOBAL_Reinforce_radius = 100; 
 
 
+//Officer bodyguard
+/*
+2 smoke rounds got Spar gl
+3 Mags
+Rook
 
+*/
+
+//Lock inventory of officer, but drop his berret on the ground next to him
+//Maybe
 
 //Sets the type of soldiers that will spawn, you can modify their loudouts below
 //Soldiers that spawn in will have one of these templates, you can add more templates or make each soldier a different type
-GLOBAL_Soldier_Type1 = "B_G_Soldier_M_F";
+//GLOBAL_Soldier_Type1 addUnitLoudout "Regular_One";
 GLOBAL_Soldier_Type2 = "B_G_Soldier_M_F";
 GLOBAL_Soldier_Type3 = "B_G_Soldier_M_F";
 GLOBAL_Soldier_Type4 = "B_G_Soldier_M_F";
+
+
+//[GLOBAL_Soldier_Type1, ["Regular_One"]] call BIS_fnc_setRespawnInventory;
+
+
+GLOBAL_Soldier_Type1 setVariable ["Regular", ["U_O_T_Soldier_F", "srifle_DMR_01_F", "10Rnd_762x54_Mag", "H_HelmetB_TI_tna_F", 0.5]];
+
+/*
+GLOBAL_Soldier_Type1 setUnitLoadout [
+	["bipod_03_F_blk","","muzzle_snds_B_arid_F","optic_Holosight",[],[],""],
+	[],
+	["srifle_DMR_01_F","","","",["10Rnd_762x54_Mag",10],[],""],
+	["U_O_T_Soldier_F",[ ["10Rnd_762x54_Mag",1,1] ]],
+	["V_HarnessO_ghex_F",[]],
+	["B_ViperLightHarness_ghex_F",[]],
+	"H_HelmetB_TI_tna_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles"]
+];
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Not an active soldier template, mainly used to identify a specific unit by changing to this soldier type
 GLOBAL_Soldier_TypeTESTING = "B_G_Soldier_LAT_F";
@@ -64,8 +104,6 @@ Near_Crate = false;
 0 = [_XY3, _Z3, call (compile (preprocessFileLineNumbers "Warzone\Warzone Locations\build\loc3Buildings.sqf"))] call BIS_fnc_ObjectsMapper;
 LOC3_KEY_trigger = createTrigger ["EmptyDetector", [9762.25,9368]];
 LOC3_KEY_trigger setTriggerArea [3,3, 0, false];
-
-
 //Its not detecting player within trigger
 LOC3_KEY_trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
 

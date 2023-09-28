@@ -4,4 +4,5 @@
 
 2) Crates inventory accessible even though they are locked (Locality Issue)
 
+//
 3) Crates not unlocking
