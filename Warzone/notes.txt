@@ -6,3 +6,6 @@
 
 //
 3) Crates not unlocking
+
+
+4) Test opening crate in facility

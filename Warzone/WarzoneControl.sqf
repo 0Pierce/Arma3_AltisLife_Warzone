@@ -47,6 +47,7 @@ Rook
 //Sets the type of soldiers that will spawn, you can modify their loudouts below
 //Soldiers that spawn in will have one of these templates, you can add more templates or make each soldier a different type
 //GLOBAL_Soldier_Type1 addUnitLoudout "Regular_One";
+GLOBAL_Soldier_Type1 = "B_G_Soldier_M_F";
 GLOBAL_Soldier_Type2 = "B_G_Soldier_M_F";
 GLOBAL_Soldier_Type3 = "B_G_Soldier_M_F";
 GLOBAL_Soldier_Type4 = "B_G_Soldier_M_F";
@@ -55,7 +56,7 @@ GLOBAL_Soldier_Type4 = "B_G_Soldier_M_F";
 //[GLOBAL_Soldier_Type1, ["Regular_One"]] call BIS_fnc_setRespawnInventory;
 
 
-GLOBAL_Soldier_Type1 setVariable ["Regular", ["U_O_T_Soldier_F", "srifle_DMR_01_F", "10Rnd_762x54_Mag", "H_HelmetB_TI_tna_F", 0.5]];
+//GLOBAL_Soldier_Type1 setVariable ["Regular", ["U_O_T_Soldier_F", "srifle_DMR_01_F", "10Rnd_762x54_Mag", "H_HelmetB_TI_tna_F", 0.5]];
 
 /*
 GLOBAL_Soldier_Type1 setUnitLoadout [

@@ -27,6 +27,7 @@ _rotation = random(200);
 	marker13 setMarkerColor "ColorYellow";
 	marker13 setMarkerText "Outpost #1";
 
+
     
     FAC3_unitsAlive = 10;
 
@@ -35,7 +36,7 @@ _rotation = random(200);
 
 
 	//Spawns units
-	_unit0 = Location3 createUnit [GLOBAL_Soldier_Type1, [9782.482, 9385.969, 3.122], [], 0, "CAN_COLLIDE"];
+	_unit0 = Location3 createUnit [GLOBAL_Soldier_Type2, [9782.482, 9385.969, 3.122], [], 0, "CAN_COLLIDE"];
     _unit1 = Location3 createUnit [GLOBAL_Soldier_Type2, [9778.714, 9396.107, 3.473], [], 0, "CAN_COLLIDE"]; //Command post
     _unit2 = Location3 createUnit [GLOBAL_Soldier_Type3, [9765.111, 9419.481, 4.184], [], 0, "CAN_COLLIDE"];
 
@@ -46,6 +47,7 @@ _rotation = random(200);
 	_unit7 = Location3 createUnit [GLOBAL_Soldier_Type2, [9778.885, 9361.679, 0.535], [], 0, "CAN_COLLIDE"];
 	_unit8 = Location3 createUnit [GLOBAL_Soldier_Type3, [9766.181, 9370.251, 0.535], [], 0, "CAN_COLLIDE"];
 	_unit9 = Location3 createUnit [GLOBAL_Soldier_Type2, [9771.730, 9400.272, 0.535], [], 0, "CAN_COLLIDE"];
+
 
 
 	//Patrol
@@ -63,11 +65,13 @@ Location3_test = createGroup resistance;
 	_unit4TEST = Location3_test createUnit [GLOBAL_Soldier_TypeTESTING, [9811.526, 9372.131, 0], [], 0, "CAN_COLLIDE"];
 	_unit5TEST = Location3_test createUnit [GLOBAL_Soldier_TypeTESTING, [9811.526, 9372.131, 0], [], 0, "CAN_COLLIDE"];
 
+	
 
 
 	[_unit3TEST, _unit4TEST, _unit5TEST] join Location3_test;
 
-
+	_unit3TEST setUnitLoadout (configFile >> "CfgVehicles" >> "B_Soldier_F");
+	_unit4TEST setUnitLoadout (missionConfigFile >> "B_Soldier_F");
 
 
  gcount = count units Location3_test;
