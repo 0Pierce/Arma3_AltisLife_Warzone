@@ -113,12 +113,18 @@ _x addEventHandler ["Killed", {
 
 	//Checks if last enemy has been killed
 	if (Loc1gcount == 0) then{
-		
-		marker13E setMarkerColor "ColorGreen";
-		marker13 setMarkerText "Outpost #1 - RAIDED";
+		marker1E setMarkerColor "ColorGreen";
+		marker1 setMarkerText "Facility #1 - RAIDED";
 		["Worked"] remoteExec ["hint", 0];
-		LOC_tracker = 3;
+		LOC_tracker = 1;
 		execVM "Warzone\Warzone Locations\locReinforce.sqf";
+txt5Layer = "txt5" call BIS_fnc_rscLayer;
+			_texta = "<t font ='EtelkaMonospaceProBold' align = 'center' size='1' color='#FFFFFF'>" + "Facility #1 has been raided"+"</t>"; 
+[_texta,/* poz x */ 0,/* poz y */ 1,/*durata*/ 5,/* fade in?*/ 1,0,txt5Layer] spawn BIS_fnc_dynamicText;
+
+	//Begins respawn
+	LOC_count = 1;
+ 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 
 	}
 }];
@@ -127,119 +133,12 @@ _x addEventHandler ["Killed", {
 
 
 _x disableAI "PATH";
-}forEach units Location3;
+}forEach units Location1;
 
 
 
 
-	_unit0 addEventHandler ["Killed", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
-
-	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
-		marker1E setMarkerColor "ColorGreen";
-		marker1 setMarkerText "Facility #1 - RAIDED";
-		txt5Layer = "txt5" call BIS_fnc_rscLayer;
-		_texta = "<t font ='EtelkaMonospaceProBold' align = 'center' size='1' color='#FFFFFF'>" + "Facility #1 has been raided"+"</t>"; 
-[_texta,/* poz x */ 0,/* poz y */ 1,/*durata*/ 5,/* fade in?*/ 1,0,txt5Layer] spawn BIS_fnc_dynamicText;
-
-	//Begins respawn
-	LOC_count = 1;
- 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
 	
-
-	}
-}];
-
-	_unit1 addEventHandler ["Killed", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
-
-	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
-		marker1E setMarkerColor "ColorGreen";
-		marker1 setMarkerText "Facility #1 - RAIDED";
-		txt5Layer = "txt5" call BIS_fnc_rscLayer;
-		_texta = "<t font ='EtelkaMonospaceProBold' align = 'center' size='1' color='#FFFFFF'>" + "Facility #1 has been raided"+"</t>"; 
-[_texta,/* poz x */ 0,/* poz y */ 1,/*durata*/ 5,/* fade in?*/ 1,0,txt5Layer] spawn BIS_fnc_dynamicText;
-
-	//Begins respawn
-	LOC_count = 1;
- 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
-	
-		
-	}
-}];
-
-	_unit2 addEventHandler ["Killed", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
-
-	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
-		marker1E setMarkerColor "ColorGreen";
-		marker1 setMarkerText "Facility #1 - RAIDED";
-		txt5Layer = "txt5" call BIS_fnc_rscLayer;
-		_texta = "<t font ='EtelkaMonospaceProBold' align = 'center' size='1' color='#FFFFFF'>" + "Facility #1 has been raided"+"</t>"; 
-[_texta,/* poz x */ 0,/* poz y */ 1,/*durata*/ 5,/* fade in?*/ 1,0,txt5Layer] spawn BIS_fnc_dynamicText;
-
-	//Begins respawn
- 	LOC_count = 1;
- 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
-	
-	}
-}];
-
-	_unit3 addEventHandler ["Killed", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
-
-
-	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
-		marker1E setMarkerColor "ColorGreen";
-		marker1 setMarkerText "Facility #1 - RAIDED";
-		
-		txt5Layer = "txt5" call BIS_fnc_rscLayer;
-_texta = "<t font ='EtelkaMonospaceProBold' align = 'center' size='1' color='#FFFFFF'>" + "Facility #1 has been raided"+"</t>"; 
-[_texta,/* poz x */ 0,/* poz y */ 1,/*durata*/ 5,/* fade in?*/ 1,0,txt5Layer] spawn BIS_fnc_dynamicText;
-	//Begins respawn
-	LOC_count = 1;
- 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
-	
-
-		
-	}
-}];
-
-	_unit4 addEventHandler ["Killed", {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
-	FAC1_unitsAlive = FAC1_unitsAlive -1;
-	hint format ["There are: %1 Guard/s remaining.", FAC1_unitsAlive];
-
-
-	//Checks if last enemy has been killed
-	if (FAC1_unitsAlive == 0) then{
-		marker1E setMarkerColor "ColorGreen";
-		marker1 setMarkerText "Facility #1 - RAIDED";
-		txt5Layer = "txt5" call BIS_fnc_rscLayer;
-		_texta = "<t font ='EtelkaMonospaceProBold' align = 'center' size='1' color='#FFFFFF'>" + "Facility #1 has been raided"+"</t>"; 
-[_texta,/* poz x */ 0,/* poz y */ 1,/*durata*/ 5,/* fade in?*/ 1,0,txt5Layer] spawn BIS_fnc_dynamicText;
-
-
-	//Begins respawn
- 	 LOC_count = 1;
- 	 execVM "Warzone\Warzone Locations\locRespawn.sqf";
-	
-
-		
-	}
-}];
 
 
 

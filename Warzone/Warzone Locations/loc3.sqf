@@ -117,9 +117,8 @@ _tempCount = 0;
 
  
 
-
-Loc3gcount = count units Location3;
 //Adds a event handler for all the units
+Loc3gcount = count units Location3;
 {
 _x addEventHandler ["Killed", {
 	
@@ -133,6 +132,8 @@ _x addEventHandler ["Killed", {
 		["Worked"] remoteExec ["hint", 0];
 		LOC_tracker = 3;
 		execVM "Warzone\Warzone Locations\locReinforce.sqf";
+		LOC_count = 3;
+ 	 	execVM "Warzone\Warzone Locations\locRespawn.sqf";
 
 	}
 }];
@@ -150,12 +151,11 @@ _x disableAI "PATH";
 
 
 
-
+//Handles the AI grouping
 	[_unit0, _unit1, _unit2, _unit3, _unit4,_unit5,_unit6,_unit7,_unit8,_unit9] join Location3;
 	[_unit0P, _unit1P, _unit2P] join Location3_Patrol0;
 	[_unit3P, _unit4P, _unit5P] join Location3_Patrol1;
 
-	
 
 
 	//Sets the patrol
@@ -163,19 +163,9 @@ _x disableAI "PATH";
 	[Location3_Patrol1, getpos _unit0P, GLOBAL_Patrol_Radius] call BIS_fnc_taskPatrol;
 
 
-	
-
-
-
-
-
-
-	
 	Location3 setBehaviour "SAFE";
 	Location3_Patrol0 setBehaviour "SAFE";
 	Location3_Patrol1 setBehaviour "SAFE";
-	
-
 
 	//Puts the units into a single array for deletion
 	LOC3_units = units Location3;

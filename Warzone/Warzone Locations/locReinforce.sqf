@@ -11,7 +11,7 @@ if(LOC_tracker == 1) then{
 		_MARK_Y = 8155.558;
 		_HeliDrop = [12413.165, 8371.894];
 		_centerBase = [12293.518, 8889.604];
-		_ReinHeliINFSpawn = [15412.216, 2809.427];
+		_ReinHeliINFSpawn = [15212.216, 2809.427];
 		_ReinHeliINFSpawn2 = [15512.216, 2809.427];
 		_center = 0;
 		_marker = getMarkerPos "marker1";

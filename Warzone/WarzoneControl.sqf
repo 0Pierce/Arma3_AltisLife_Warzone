@@ -7,7 +7,7 @@
 //=============== * Things not to touch, unless you understand well * ===============
 //LOC_count (Keeps track which locations need reinforcements)
 //LOC_tracker (Keeps track of which location needs to be despawned, respawned, or reinforcements sent to)
-//FAC_unitsAlive (sets the amount of units which are expected to be GUARDING said base - does not include patrols)
+
 
 
 
@@ -28,10 +28,13 @@ GLOBAL_AI_Respawn_Timer = 1000; // Sets the amount of seconds before the raided 
 GLOBAL_Computer_Crate_Open_Radius = 3; //Sets the radius a player must be within while opening the crates VIA computer
 	//^^^^^^^^^^^^^^^^^^^
 
-//Sets the spawn radius of reinforcing troops (The center is not the outpost/base, it is a area where the player is less likely to see them spawn) 
-//I highly suggest not altering this value too much, as extreme numbers may make the reinforcements spawn very close, or on the outpost itself / extremely far away
-GLOBAL_Reinforce_radius = 100; 
-
+//To adjust soldier templates check out the WarzoneLoadOuts.hpp 
+//Types used for testing, not live. Will get overriden automatically. No need to alter
+GLOBAL_Soldier_Type1 = "B_G_Soldier_M_F";
+GLOBAL_Soldier_Type2 = "B_G_Soldier_M_F";
+GLOBAL_Soldier_Type3 = "B_G_Soldier_M_F";
+GLOBAL_Soldier_Type4 = "B_G_Soldier_M_F";
+GLOBAL_Soldier_TypeTESTING = "B_G_Soldier_LAT_F";
 
 //Officer bodyguard
 /*
@@ -44,51 +47,14 @@ Rook
 //Lock inventory of officer, but drop his berret on the ground next to him
 //Maybe
 
-//Sets the type of soldiers that will spawn, you can modify their loudouts below
-//Soldiers that spawn in will have one of these templates, you can add more templates or make each soldier a different type
-//GLOBAL_Soldier_Type1 addUnitLoudout "Regular_One";
-GLOBAL_Soldier_Type1 = "B_G_Soldier_M_F";
-GLOBAL_Soldier_Type2 = "B_G_Soldier_M_F";
-GLOBAL_Soldier_Type3 = "B_G_Soldier_M_F";
-GLOBAL_Soldier_Type4 = "B_G_Soldier_M_F";
-
-
-//[GLOBAL_Soldier_Type1, ["Regular_One"]] call BIS_fnc_setRespawnInventory;
-
-
-//GLOBAL_Soldier_Type1 setVariable ["Regular", ["U_O_T_Soldier_F", "srifle_DMR_01_F", "10Rnd_762x54_Mag", "H_HelmetB_TI_tna_F", 0.5]];
-
-/*
-GLOBAL_Soldier_Type1 setUnitLoadout [
-	["bipod_03_F_blk","","muzzle_snds_B_arid_F","optic_Holosight",[],[],""],
-	[],
-	["srifle_DMR_01_F","","","",["10Rnd_762x54_Mag",10],[],""],
-	["U_O_T_Soldier_F",[ ["10Rnd_762x54_Mag",1,1] ]],
-	["V_HarnessO_ghex_F",[]],
-	["B_ViperLightHarness_ghex_F",[]],
-	"H_HelmetB_TI_tna_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles"]
-];
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Not an active soldier template, mainly used to identify a specific unit by changing to this soldier type
-GLOBAL_Soldier_TypeTESTING = "B_G_Soldier_LAT_F";
-
-
 //=============== * END * =========================
 //=================================================
+
+
+
+
+
+
 
 
 
@@ -103,21 +69,18 @@ Near_Crate = false;
 
 //Spawns the composition for LOC3
 0 = [_XY3, _Z3, call (compile (preprocessFileLineNumbers "Warzone\Warzone Locations\build\loc3Buildings.sqf"))] call BIS_fnc_ObjectsMapper;
-LOC3_KEY_trigger = createTrigger ["EmptyDetector", [9762.25,9368]];
-LOC3_KEY_trigger setTriggerArea [3,3, 0, false];
-//Its not detecting player within trigger
-LOC3_KEY_trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-
-//Executes first line on trigger activation, and second on trigger deactivation
-LOC3_KEY_trigger setTriggerStatements ["this", "Near_Crate = true;", "Near_Crate = false;"];
-
-
-
-
 
 //=============== * END * =========================
 //=================================================
 
+
+
+
+
+
+
+//=================================================
+//=============== * Triggers & Markers * ===============
 
 //resistance setFriend [playerSide, 0]
 
@@ -136,10 +99,8 @@ Location3_Patrol1 = createGroup resistance;
 
 
 LOC1_trigger = createTrigger ["EmptyDetector", [12301.926, 8876.265]];
-//Adjust XY values to change trigger range of Locations
 LOC1_trigger setTriggerArea [GLOBAL_AI_Trigger_Area_X, GLOBAL_AI_Trigger_Area_Y, 0, false, -1];
 LOC1_trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-
 LOC1_trigger setTriggerStatements ["this", "execVM 'Warzone\Warzone Locations\loc1.sqf'", "LOC_tracker = 1; execVM 'Warzone\Warzone Locations\locDespawn.sqf';"];
 
 
@@ -147,17 +108,9 @@ LOC1_trigger setTriggerStatements ["this", "execVM 'Warzone\Warzone Locations\lo
 LOC3_trigger = createTrigger ["EmptyDetector", [9763.765, 9395.391]];
 LOC3_trigger setTriggerArea [GLOBAL_AI_Trigger_Area_X, GLOBAL_AI_Trigger_Area_Y, 0, false, -1];
 LOC3_trigger setTriggerActivation ["ANYPLAYER", "PRESENT", true];
-
-
-
-//FIX SPAWNING IN MULTIPLE TIMES WHEN MORE THAN ONE PLAYER ENTERS
 LOC3_trigger setTriggerStatements ["this", "execVM 'Warzone\Warzone Locations\loc3.sqf'"," LOC_tracker = 3; execVM 'Warzone\Warzone Locations\locDespawn.sqf';"];
 
-//Spawns / despawns the AI depending on if there are players nearby
 
-
-//Example not functional rn
-//LOC2_trigger setTriggerStatements ["this", "execVM 'Warzone Locations\loc2.sqf'", "execVM 'Warzone Locations\locDespawn.sqf'; LOC_tracker = 2;"];
 
 
 
