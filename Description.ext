@@ -1,1 +1,2 @@
 #include "Warzone\WarzoneLoadouts.hpp"
+#include "Warzone\WarzoneCrateLoot.hpp"
