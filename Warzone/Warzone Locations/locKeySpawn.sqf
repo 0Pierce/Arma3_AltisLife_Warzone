@@ -32,8 +32,8 @@ private _selectedKeySpawn = KEY_Spawn_Positions select 0;
 _selectedKeySpawn apply {clearItemCargoGlobal _x};
 
  Random_Location = selectRandom KEY_Spawn_Positions;
-private _random_Crate = selectRandom Random_Location;
-_random_Crate addMagazineCargoGlobal ["Keys", 1];
+Random_Crate = selectRandom Random_Location;
+
 
 {
     [_x,true] remoteExec ["lockInventory",0];
@@ -68,11 +68,13 @@ _random_Crate addMagazineCargoGlobal ["Keys", 1];
 
 
     format ["All crates is unlocked"] remoteExec ["hint", [0,-2] select isDedicated];
+    Random_Crate addMagazineCargoGlobal ["Keys", 1];
     _target removeAction _actionId;
 
     {
         [_x, false] remoteExec ["lockInventory", 0, true];
         systemchat format ["UNLOCKED CRATE %1",_x];
+        
     } forEach _lockedInventorys;
 
     
