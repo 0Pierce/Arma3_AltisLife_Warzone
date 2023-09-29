@@ -35,13 +35,18 @@ _selectedKeySpawn apply {clearItemCargoGlobal _x};
 Random_Crate = selectRandom Random_Location;
 
 
+//Locks the inventories of all the crates
 {
     [_x,true] remoteExec ["lockInventory",0];
 } forEach _selectedKeySpawn;
 
 //LOC3_Caller_count = 0; // This is only global on server , if you want update/ change need globalVariable / get, setVariable to object
 
-[LOC3_Unlocker,["Unlock Crates",{
+
+
+
+//Add Action
+[LOC3_Unlocker,["Hack Crates",{
 
 
 
@@ -49,12 +54,12 @@ Random_Crate = selectRandom Random_Location;
     params ["_target", "_caller", "_actionId", "_arguments"];
     systemchat "Ran unlock";
     private _lockedInventorys = _arguments select 0;
-    private _timeLeft = 5;
+    private _timeLeft = GLOBAL_KeyCrate_Open_Time;
 
 
 
-	
-    while {_timeLeft > 0 && {_caller distance _target < 3}} do {
+	//Runs the countdown for the amount of time left
+    while {_timeLeft > 0 && {_caller distance _target < GLOBAL_Computer_Crate_Open_Radius}} do {
         format ["Unlocking in: %1s",_timeLeft] remoteExec ["hint", [0,-2] select isDedicated];
         sleep 1;
         _timeLeft = _timeLeft-1;    
@@ -63,7 +68,7 @@ Random_Crate = selectRandom Random_Location;
 
 
     if (_timeLeft != 0) exitWith {
-        format ["Unlocking was interrupted"] remoteExec ["hint", [0,-2] select isDedicated];
+        format ["Cant reach computer"] remoteExec ["hint", [0,-2] select isDedicated];
     };
 
 

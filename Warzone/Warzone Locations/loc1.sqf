@@ -64,10 +64,9 @@
 	LOC1_units append units Location1_Patrol;
 	
     LOC1_loot = createVehicle ["IG_supplyCrate_F", [12287.366,8894.67]];
-	//LOC1_loot lockInventory true;
-	//Locks the inventory and enables JIP
-	LOC1_loot, true remoteExec ["lockInventory", LOC1_loot, true];
 	
+	[LOC1_loot,true] remoteExec ["lockInventory",0];
+
 
 
 //Checks if the player has the key to open the crate
@@ -91,7 +90,8 @@
 			
 			hint"Crate Unlocked!";
 			//LOC1_loot lockInventory false;
-			LOC1_loot, false remoteExec ["lockInventory", LOC1_loot, true];
+			//LOC1_loot, false remoteExec ["lockInventory", LOC1_loot, true];
+			[LOC1_loot,false] remoteExec ["lockInventory",0];
 		}else{
 			hint"Missing Key";
 		}
@@ -103,8 +103,31 @@
 
 
 
+	
+	Loc1gcount = count units Location1;
+//Adds a event handler for all the units
+{
+_x addEventHandler ["Killed", {
+	
+	Loc1gcount = Loc1gcount-1;
+
+	//Checks if last enemy has been killed
+	if (Loc1gcount == 0) then{
+		
+		marker13E setMarkerColor "ColorGreen";
+		marker13 setMarkerText "Outpost #1 - RAIDED";
+		["Worked"] remoteExec ["hint", 0];
+		LOC_tracker = 3;
+		execVM "Warzone\Warzone Locations\locReinforce.sqf";
+
+	}
+}];
 
 
+
+
+_x disableAI "PATH";
+}forEach units Location3;
 
 
 

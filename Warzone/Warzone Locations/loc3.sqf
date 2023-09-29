@@ -83,15 +83,15 @@ _rotation = random(200);
 //Equally distributes 3 types of loadouts amongst all of the units
 //The number of untis needs to be dividable by 3 for it to be perfectly balanced
 //It will still work if the amount isnt dividable by 3, but it wont be equal
-TempCountLoc3 = 0;
+_tempCount = 0;
 	{
 
-		if(TempCountLoc3 < LOC_unitCount /3)then{
+		if(_tempCount < LOC_unitCount /3)then{
 			_x setUnitLoadout (missionConfigFile >> "Regular_One");
 		}
 		else{
 
-		if (TempCountLoc3 >LOC_unitCount /3 &&TempCountLoc3 < (LOC_unitCount *2) / 3)then{
+		if (_tempCount >LOC_unitCount /3 &&_tempCount < (LOC_unitCount *2) / 3)then{
 			_x setUnitLoadout (missionConfigFile >> "Regular_Two");
 		}
 		else{
@@ -101,7 +101,7 @@ TempCountLoc3 = 0;
 		
 
 
-		TempCountLoc3 = TempCountLoc3+1;
+		_tempCount = _tempCount+1;
 		
 		
 
@@ -114,17 +114,19 @@ TempCountLoc3 = 0;
 	//_unit4TEST setUnitLoadout (missionConfigFile >> "Regular_One");
 
 
- gcount = count units Location3;
+
+ 
 
 
-
+Loc3gcount = count units Location3;
 //Adds a event handler for all the units
 {
 _x addEventHandler ["Killed", {
-	gcount = gcount-1;
+	
+	Loc3gcount = Loc3gcount-1;
 
 	//Checks if last enemy has been killed
-	if (gcount == 0) then{
+	if (Loc3gcount == 0) then{
 		
 		marker13E setMarkerColor "ColorGreen";
 		marker13 setMarkerText "Outpost #1 - RAIDED";
@@ -137,6 +139,8 @@ _x addEventHandler ["Killed", {
 
 
 
+
+_x disableAI "PATH";
 }forEach units Location3;
 
 
@@ -144,16 +148,7 @@ _x addEventHandler ["Killed", {
 
 	
 
-    _unit0 disableAI "PATH";
-    _unit1 disableAI "PATH";
-    _unit2 disableAI "PATH";
-    _unit3 disableAI "PATH";
-    _unit4 disableAI "PATH";
-	_unit5 disableAI "PATH";
-	_unit6 disableAI "PATH";
-	_unit7 disableAI "PATH";
-	_unit8 disableAI "PATH";
-	_unit9 disableAI "PATH";
+
 
 
 	[_unit0, _unit1, _unit2, _unit3, _unit4,_unit5,_unit6,_unit7,_unit8,_unit9] join Location3;
@@ -180,6 +175,7 @@ _x addEventHandler ["Killed", {
 	Location3_Patrol0 setBehaviour "SAFE";
 	Location3_Patrol1 setBehaviour "SAFE";
 	
+
 
 	//Puts the units into a single array for deletion
 	LOC3_units = units Location3;
